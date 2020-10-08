@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+int main()
+{
+    float w[7]={2,3,5,7,1,4,1};
+    float p[7]={10,5,15,7,6,18,3};
+    int i,j;
+    float m=15;
+    float weight=m;
+    
+    float prop[7];
+    float x[7];
+    
+    for(i=0;i<7;i++)
+    {
+        x[i]=0;
+    }
+    
+    for (i = 0; i < 7; i++) {
+        
+        prop[i]=p[i]/w[i];
+    }
+    
+    for (i = 0; i < 7; i++) {
+        
+        printf("%f ",prop[i]);
+    }
+    printf("\n");
+    for(j=0;j<7;j++)
+    {
+        float max=0;  
+        int loc;
+        for(i=0;i<7;i++)
+        {
+            if(prop[i]>max && (x[i]==0))
+            {
+                max=prop[i];
+                loc=i;
+            }
+            
+            
+        }
+        printf("%f ", max);
+        if(w[loc]>weight)
+            {
+                 x[loc]=weight/w[loc];
+                weight=0;
+                break;
+            }
+        else
+        {
+            weight-=w[loc];
+            x[loc]=1;
+        }
+    }
+    
+    printf("\n");
+    
+    for (i = 0; i < 7; i++) {
+        
+        printf("%f ",x[i]);
+    }
+    
+    
+    return 0;
+}
